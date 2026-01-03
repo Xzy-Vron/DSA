@@ -15,7 +15,7 @@ public:
     int getProduct(int k) {
         if (k >= product.size()) return 0;
         else {
-            return product[product.size()-1]/product[product.size()-k-1];
+            return product.back()/product[product.size()-k-1];
         } 
     }
 };
