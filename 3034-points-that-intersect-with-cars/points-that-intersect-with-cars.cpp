@@ -15,3 +15,5 @@ public:
         return s.size();
     }
 };
+
+// O(nums.size() * position.size()) -> O(n^2)
