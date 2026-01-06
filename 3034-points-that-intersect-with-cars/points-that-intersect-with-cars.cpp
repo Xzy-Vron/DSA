@@ -1,18 +1,23 @@
 class Solution {
 public:
     int numberOfPoints(vector<vector<int>>& nums) {
-        unordered_set<int> s;
-        
-        for (auto &position: nums) {
-            int start = position[0];
-            int end = position[1];
+    // Optimised Approach
+        vector<int> diff(102, 0);
+        int count=0;
 
-            for (int i=start; i<=end; i++) {
-                s.insert(i);
+        for (auto &position: nums) {
+            diff[position[0]] += 1;
+            diff[position[1]+1] -= 1;
+        }
+        
+        for (int i=1; i<diff.size(); i++) {
+            diff[i] += diff[i-1];
+            if (diff[i]>0) {
+                count++;
             }
         }
-
-        return s.size();
+        
+        return count;
     }
 };
 
