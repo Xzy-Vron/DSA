@@ -1,14 +1,17 @@
 class Solution {
 public:
     int residuePrefixes(string s) {
-        int count =0;
-        string prefix = "";
-
-        for (int i=0; i<s.size(); i++) {
-            prefix += s[i];
-            unordered_set <char>distinct(prefix.begin(), prefix.end());
-            if  (distinct.size() == (prefix.size()%3)) count++;
+        int d=0, c=0;
+        vector<bool> p(26,false);
+        for(int i=0;i<s.length();++i){
+            if(!p[s[i]-'a']){
+                d++;
+                p[s[i]-'a']=true;
+            }
+            if(d==(i+1)%3){
+                c++;
+            }
         }
-        return count;
+        return c;
     }
 };
