@@ -8,15 +8,11 @@ public:
             m[el]++;
         }
 
-        int key = INT_MIN;
-        int valCount = 0;
         for (auto &pr: m) {
-            if (valCount < pr.second) {
-                key = pr.first;
-                valCount = pr.second;
+            if (pr.second > n /2) {
+                return pr.first;
             }
         }
-
-        return key;
+        return 0;
     }
 };
