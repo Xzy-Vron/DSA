@@ -3,17 +3,18 @@ public:
     vector<int> majorityElement(vector<int>& nums) {
         int n = nums.size();
         unordered_map<int,int> m;
-        vector<int> result;
+        unordered_set<int> s;
+        vector<int> res;
         
         for (auto &el: nums) {
             m[el]++;
-        }
-
-        for (auto &el: m) {
-            if (el.second > n/3) {
-                result.push_back(el.first);
+            if(m[el]> n/3){
+                s.insert(el); 
             }
+
         }
-        return result;
+        for (auto &el: s) res.push_back(el);
+
+        return res;
     }
 };
