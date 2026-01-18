@@ -1,23 +1,18 @@
 class Solution {
 public:
     int vowelConsonantScore(string s) {
-        float v = 0, c=0;  
-        int score =0;
-        for (auto &l: s) {
-            if (l == ' ' || isdigit(l)) {
-                continue;
-            }
-            
-            if (l == 'a'||l == 'e'||l == 'i'||l == 'o'||l == 'u') {
-                v++;
-            } else {
-                c++;
-            }
-        }
+        float v = 0, c = 0;
+        for (auto& l : s) {
 
-        if (c > 0) {
-           score = floor(v/c);
+            if (l >= 'a' && l <= 'z') {
+                if (l == 'a' || l == 'e' || l == 'i' || l == 'o' || l == 'u') {
+                    v++;
+                } else {
+                    c++;
+                }
+            }
         }
-        return score;
+        if (c == 0) return 0;
+        return floor(v/c);
     }
 };
