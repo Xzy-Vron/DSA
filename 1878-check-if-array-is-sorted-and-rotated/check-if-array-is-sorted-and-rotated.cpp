@@ -1,15 +1,14 @@
 class Solution {
 public:
     bool check(vector<int>& nums) {
+        int check = 0;
         int n = nums.size();
-        int sep = 0;
-
-        for (int i=1; i < n; i++) {
-            if (nums[i] < nums[i -1]) sep++;
+        for (int i=0; i<n-1; i++) {
+            if (nums[i] > nums[i+1]) {
+                check++;
+            }
         }
-
-        if (nums[n-1] > nums[0]) sep++;
-
-        return sep <=1;
+        if(nums[n-1] > nums[0]) check++;
+        return check <=1;
     }
 };
